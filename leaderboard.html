@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ghost Run Leaderboard</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #0D0D0D;
+      color: #F2F2F2;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+    img.logo {
+      max-width: 180px;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #FF3B3B;
+      letter-spacing: 0.1rem;
+    }
+    input[type="text"] {
+      padding: 0.5rem;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      width: 300px;
+      background: #1A1A1A;
+      border: 1px solid #444;
+      color: #F2F2F2;
+    }
+    table {
+      width: 90%;
+      max-width: 800px;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    thead {
+      background-color: #2C2C2C;
+    }
+    th, td {
+      border: 1px solid #444;
+      padding: 0.75rem 1rem;
+      text-align: center;
+    }
+    th {
+      color: #FF3B3B;
+      font-weight: 600;
+      letter-spacing: 0.05rem;
+    }
+    tr:nth-child(even) {
+      background-color: #1A1A1A;
+    }
+    tr:hover {
+      background-color: #333;
+    }
+    .footer {
+      margin-top: 4rem;
+      font-size: 0.75rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <img src="https://via.placeholder.com/180x60?text=GSTRun+Logo" alt="GSTRun Logo" class="logo" />
+  <h1>Ghost Run Leaderboard</h1>
+
+  <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search UID or Sector..." />
+
+  <table id="leaderboard">
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>UID</th>
+        <th>Sector</th>
+        <th>Time (s)</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody">
+      <!-- Data will be populated dynamically -->
+    </tbody>
+  </table>
+
+  <div class="footer">
+    &copy; 2025 GSTRun. All data is anonymous and GPS-verified.
+  </div>
+
+  <script>
+    const data = [
+      { rank: 1, uid: '#A73X9', sector: 'Glen Echo', time: 58.42, date: '2025-08-01' },
+      { rank: 2, uid: '#KD29R', sector: 'Glen Echo', time: 59.01, date: '2025-08-03' },
+      { rank: 3, uid: '#R3X88', sector: 'Glen Echo', time: 59.89, date: '2025-08-02' },
+      { rank: 4, uid: '#4M7B2', sector: 'Potomac Sprint', time: 61.23, date: '2025-08-03' }
+    ];
+
+    function loadTable(data) {
+      const tableBody = document.getElementById('tableBody');
+      tableBody.innerHTML = '';
+      data.forEach(row => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${row.rank}</td>
+          <td>${row.uid}</td>
+          <td>${row.sector}</td>
+          <td>${row.time}</td>
+          <td>${row.date}</td>
+        `;
+        tableBody.appendChild(tr);
+      });
+    }
+
+    function filterTable() {
+      const input = document.getElementById('searchInput').value.toUpperCase();
+      const filtered = data.filter(row =>
+        row.uid.toUpperCase().includes(input) || row.sector.toUpperCase().includes(input)
+      );
+      loadTable(filtered);
+    }
+
+    // Initial load
+    loadTable(data);
+  </script>
+
+</body>
+</html>
