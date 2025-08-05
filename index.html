@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ghost Run – No Names. No Limits.</title>
+  <title>Ghost Run Access</title>
   <style>
     body {
       margin: 0;
@@ -49,20 +49,6 @@
       font-size: 0.75rem;
       color: #666;
     }
-
-    #mainContent {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-    }
-
-    a.cta {
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 1rem;
-    }
   </style>
 </head>
 <body>
@@ -75,22 +61,12 @@
     <p id="errorMsg" style="color: #FF3B3B; display: none;">Incorrect code. Try again.</p>
   </div>
 
-  <div id="mainContent">
-    <h1>Ghost Run</h1>
-    <h2>No Names. No Limits.</h2>
-    
-    <div class="footer">
-      &copy; 2025 GSTRun. All rights reserved.
-    </div>
-  </div>
-
   <script>
     function checkPassword() {
-      const correctCode = "gstrun2025"; // <-- Change this code to whatever you'd like
+      const correctCode = "gstrun2025"; // Change to your desired passphrase
       const enteredCode = document.getElementById('accessCode').value;
       if (enteredCode === correctCode) {
-        document.getElementById('loginScreen').style.display = 'none';
-        document.getElementById('mainContent').style.display = 'flex';
+        window.location.href = "leaderboard.html"; // Change to actual leaderboard page URL
       } else {
         document.getElementById('errorMsg').style.display = 'block';
       }
