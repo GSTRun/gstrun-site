@@ -66,7 +66,7 @@
     }
   </style>
 </head>
-<body>
+<body onload="validateSession()">
 
   <img src="img.logo" alt="Ghost Run Logo" class="logo" />
   <h1>Ghost Run Leaderboard</h1>
@@ -93,6 +93,12 @@
   </div>
 
   <script>
+    function validateSession() {
+      if (sessionStorage.getItem("gstrunAccess") !== "1") {
+        window.location.href = "index.html"; // Change to your gate page if needed
+      }
+    }
+
     const data = [
       { rank: 1, uid: '#A73X9', sector: 'Glen Echo', time: 58.42, date: '2025-08-01' },
       { rank: 2, uid: '#KD29R', sector: 'Glen Echo', time: 59.01, date: '2025-08-03' },
@@ -124,7 +130,6 @@
       loadTable(filtered);
     }
 
-    // Initial load
     loadTable(data);
   </script>
 
