@@ -83,7 +83,8 @@
       ];
 
       if (validHashes.includes(enteredHash)) {
-        window.location.href = "leaderboard.html"; // 🔁 Redirect target page
+        sessionStorage.setItem("gstrunAccess", "1");
+        window.location.href = "leaderboard_session_protected.html"; // or your final filename
       } else {
         document.getElementById('errorMsg').style.display = 'block';
       }
