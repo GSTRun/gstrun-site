@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GSTRun – No Names. No Limits.</title>
+  <title>Ghost Run – No Names. No Limits.</title>
   <style>
     body {
       margin: 0;
@@ -52,7 +52,7 @@
 </head>
 <body>
 
-  <h1>GSTRun</h1>
+  <h1>Ghost Run</h1>
   <h2>No Names. No Limits.</h2>
   <a href="#notify" class="cta">Request Access</a>
 
